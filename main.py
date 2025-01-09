@@ -11,7 +11,7 @@ def main():
 	pygame.init()
 	screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
 	game_clock = pygame.time.Clock()
-	delta_time = 0
+	dt = 0
 
 	# Player
 	player = Player(constants.SCREEN_WIDTH / 2, constants.SCREEN_HEIGHT / 2)
@@ -21,10 +21,15 @@ def main():
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				return
+			
+		player.update(dt)
+
 		screen.fill(color="black")
 		player.draw(screen)
 		pygame.display.flip()
-		delta_time = game_clock.tick(60) // 1000
+
+		# limit FPS to 60
+		dt = game_clock.tick(60) / 1000
 		
 
 if __name__ == "__main__":
