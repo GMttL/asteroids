@@ -33,7 +33,7 @@ def main():
 
 	# Shots
 	Shot.containers = (updatable, drawable)
-	
+
 	# Game Loop
 	while True:
 		for event in pygame.event.get():
@@ -42,6 +42,8 @@ def main():
 
 		for item in updatable:	
 			item.update(dt)
+			if item == player:
+				player.timer -= dt
 		
 		for item in asteroids:
 			if item.collision(player):
