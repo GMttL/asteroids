@@ -54,7 +54,7 @@ def main():
 			for shot in shots:
 				if item.collision(shot):
 					shot.kill()
-					item.kill()
+					item.split()
 
 		screen.fill(color="black")
 		for item in drawable:
