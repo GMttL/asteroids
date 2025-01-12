@@ -3,6 +3,10 @@ from circleshape import CircleShape
 import pygame
 
 class Player(CircleShape):
+
+    # Class Variables
+    containers = None
+
     def __init__(self, x, y):
         super().__init__(x,y, constants.PLAYER_RADIUS)
 
