@@ -32,7 +32,7 @@ def main():
 	asteroid_field = AsteroidField()
 
 	# Shots
-	Shot.containers = (updatable, drawable)
+	Shot.containers = (shots, updatable, drawable)
 
 	# Game Loop
 	while True:
@@ -49,6 +49,12 @@ def main():
 			if item.collision(player):
 				print("Game Over!")
 				return
+
+			# if the asteroid touches any bullet, kill it
+			for shot in shots:
+				if item.collision(shot):
+					shot.kill()
+					item.kill()
 
 		screen.fill(color="black")
 		for item in drawable:
